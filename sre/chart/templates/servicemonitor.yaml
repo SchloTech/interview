@@ -21,9 +21,13 @@ spec:
       scrapeTimeout: {{ .Values.serviceMonitor.scrapeTimeout }}
       # Rewrite the instance label to include pod name; default instance
       # is host:port which is useless for pod-level dashboards.
+      # Prometheus Operator defaults action=replace on each relabeling
+      # entry server-side, so we set it explicitly to keep Argo in sync.
       relabelings:
-        - sourceLabels: [__meta_kubernetes_pod_name]
+        - action: replace
+          sourceLabels: [__meta_kubernetes_pod_name]
           targetLabel: pod
-        - sourceLabels: [__meta_kubernetes_namespace]
+        - action: replace
+          sourceLabels: [__meta_kubernetes_namespace]
           targetLabel: namespace
 {{- end }}
