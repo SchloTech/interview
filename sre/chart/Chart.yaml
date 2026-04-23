@@ -5,7 +5,7 @@ type: application
 # Chart version tracks packaging changes. Bumped independently of appVersion.
 version: 0.1.0
 # appVersion mirrors the image tag. CI overwrites this on build.
-appVersion: "sha-13153ef"
+appVersion: "sha-c47dfd6"
 kubeVersion: ">=1.27.0"
 maintainers:
   - name: Jake Schlotter

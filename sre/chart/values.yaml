@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/schlotech/tekmetric-backend
   # CI overwrites tag on every build. Never use mutable tags (latest, main)
   # in Argo-managed values: breaks the "git is source of truth" contract.
-  tag: "sha-13153ef"
+  tag: "sha-c47dfd6"
   pullPolicy: IfNotPresent
   pullSecrets: []
 
