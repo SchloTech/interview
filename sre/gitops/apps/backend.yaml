@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/SchloTech/interview.git
     targetRevision: HEAD
-    path: interview/sre/chart
+    path: sre/chart
     helm:
       releaseName: tekmetric-backend
       valueFiles:

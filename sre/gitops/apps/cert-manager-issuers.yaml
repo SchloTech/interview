@@ -14,7 +14,7 @@ spec:
   source:
     repoURL: https://github.com/SchloTech/interview.git
     targetRevision: HEAD
-    path: interview/sre/gitops/manifests/cert-manager
+    path: sre/gitops/manifests/cert-manager
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager

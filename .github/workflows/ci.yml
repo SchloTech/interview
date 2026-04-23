@@ -7,8 +7,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "interview/sre/**"
-      - "interview/backend/**"
+      - "sre/**"
+      - "backend/**"
       - ".github/workflows/ci.yml"
     tags:
       - "v*.*.*"
@@ -65,7 +65,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: interview/sre/Dockerfile
+          file: sre/Dockerfile
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.image_tag }}
@@ -96,15 +96,15 @@ jobs:
           NEW_TAG: ${{ steps.meta.outputs.image_tag }}
         run: |
           set -euo pipefail
-          FILE=interview/sre/chart/values.yaml
+          FILE=sre/chart/values.yaml
           sed -i -E "s|^(  tag: ).*$|\1\"${NEW_TAG}\"|" "$FILE"
-          sed -i -E "s|^appVersion: .*$|appVersion: \"${NEW_TAG}\"|" interview/sre/chart/Chart.yaml
+          sed -i -E "s|^appVersion: .*$|appVersion: \"${NEW_TAG}\"|" sre/chart/Chart.yaml
           if git diff --quiet; then
             echo "No changes to commit."
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$FILE" interview/sre/chart/Chart.yaml
+          git add "$FILE" sre/chart/Chart.yaml
           git commit -m "chore(sre): bump backend image to ${NEW_TAG} [skip ci]"
           git push origin HEAD:main

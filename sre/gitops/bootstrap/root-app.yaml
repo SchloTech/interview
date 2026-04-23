@@ -16,7 +16,7 @@ spec:
     # PUBLIC_REPO_URL_AND_PATH: replace with the PR fork URL before demo.
     repoURL: https://github.com/SchloTech/interview.git
     targetRevision: HEAD
-    path: interview/sre/gitops/apps
+    path: sre/gitops/apps
     directory:
       recurse: true
   destination:
