@@ -66,6 +66,9 @@ jobs:
         with:
           context: .
           file: sre/Dockerfile
+          # Multi-arch so the image runs on both Intel/AMD hosts (cloud,
+          # x86 CI) and Apple Silicon / Graviton / ARM nodes.
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.image_tag }}
